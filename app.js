@@ -6,18 +6,18 @@ var form = document.forms.form;
 
 function showError(input, message) {
     let inputElement = input.parentElement;
-    let errorElement = inputElement.querySelector('.form-message');
+    let errorElement = inputElement.querySelector('.form-error');
 
-    inputElement.classList.add('error');
+    // inputElement.classList.add('error');
     errorElement.innerText = message;
 
 }
 
 function showSuccess(input) {
     let inputElement = input.parentElement;
-    let errorElement = inputElement.querySelector('.form-message');
+    let errorElement = inputElement.querySelector('.form-error');
 
-    inputElement.classList.add('error');
+    // inputElement.classList.add('error');
     errorElement.innerText = '';
 
 }
@@ -70,12 +70,16 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
 
     let isEmptyError = isEmptyInput([fullname, email, subject, message]);
-    let isEmailError = checkEmail(email);
-    let issubjectLengthError = checkLength(subject, 50, 250);
 
-    let isfullNameLengthError = checkLength(fullname, 1, 100);
-    let isemailLengthError = checkLength(email, 1, 100);
-    let ismessageLengthError = checkLength(message, 1, 500);
+    if (!isEmptyError) {
+        var isfullNameLengthError = checkLength(fullname, 5, 100);
+        var isemailLengthError = checkLength(email, 5, 100);
+        var issubjectLengthError = checkLength(subject, 50, 250);
+        var ismessageLengthError = checkLength(message, 5, 500);
+    }
+    if (!isEmptyError && !isemailLengthError) {
+        var isEmailError = checkEmail(email);
+    }
 
     if (isEmptyError || isEmailError || issubjectLengthError || isfullNameLengthError || isemailLengthError || ismessageLengthError) {
         //123
