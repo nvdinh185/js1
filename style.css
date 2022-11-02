@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Dancing script";
+    color: #481f01;
+}
+.banner {
+    background-image: url(images/banner.png);
+    height: 400px;
+    width: auto;
+}
+.title {
+    background-color: rgba(233, 233, 233, 0.7);
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    top: 70%;
+    text-align: center;
+}
+nav {
+    height: 80px;
+    width: 100%;
+    background: #1c275e;
+    top: 0;
+    position: fixed;
+}
+nav ul {
+    list-style: none;
+    float: right;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 80px;
+    padding: 0px 30px;
+    color: white;
+}
+nav li ul {
+    display: none;
+    position: absolute;
+    width: inherit;
+}
+nav li ul li {
+    display: block;
+    background-color: #251772;
+    margin-left: -40px;
+    border: 0.5px solid #042331;
+    border-top: none;
+}
+nav li ul li a {
+    margin-left: -20px;
+    line-height: 50px;
+}
+nav li:hover ul {
+    display: block;
+}
+nav ul li:hover {
+    background: #273786;
+    transition: all 0.5s;
+    border-radius: 9px;
+}
+nav ul li:active {
+    background-color: antiquewhite;
+    transition: all 0.5s;
+}
+main > div {
+    margin-top: 30px;
+}
+img {
+    width: 45%;
+    height: 40%;
+    padding: 5px;
+}
+.item * {
+    margin: 10px;
+}
+footer {
+    height: 130px;
+    width: 100%;
+    background-color: #1c275e;
+    margin-top: 10px;
+}
+footer div span {
+    margin-left: 30px;
+    color: white;
+    margin-top: 50px;
+}
+footer span i {
+    font-size: 2em;
+    color: white;
+    margin-top: 50px;
+}
+footer div span:last-child {
+    font-size: small;
+    float: right;
+    margin-right: 10px;
+}
+footer span i:hover {
+    color: black;
+    transition: all 0.5s;
+}
+main div a {
+    color: blue;
+}
+main div a:hover {
+    color: plum;
+}
+.mnlist {
+    display: flex;
+    padding: 10px;
+}
+.list_item {
+    margin-left: 20px;
+    width: 25%;
+}
+.item_img {
+    height: 300px;
+    width: 300px;
+    border-radius: 150px;
+}
+.item_info {
+    text-align: center;
+}
+.heading {
+    font-size: 3rem;
+    padding: 20px 50px;
+}
+.form {
+    width: 900px;
+    box-sizing: border-box;
+}
+div {
+    margin: 50px;
+}
+.form-label {
+    font-size: 1.4rem;
+    text-align: left;
+}
+.form-control {
+    height: 40px;
+    border: 1px solid #b3b3b3;
+    border-radius: 8px;
+    outline: none;
+    width: 600px;
+    text-align: left;
+    font-size: 1.2rem;
+    display: flex;
+    float: right;
+    padding: 0px 20px;
+}
+.form-submit {
+    background-color: #1dbfaf;
+    outline: none;
+    margin-top: 20px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 60px;
+    width: 30%;
+    float: left;
+    margin-left: 215px;
+}
+#message {
+    height: 200px;
+    padding: 20px;
+}
+.form-message {
+    color: #f33a58;
+    width: 60%;
+    height: 20px;
+    font-size: medium;
+    display: inline-block;
+    margin: 5px 200px;
+}
