@@ -8,18 +8,16 @@ function showError(input, message) {
     let inputElement = input.parentElement;
     let errorElement = inputElement.querySelector('.form-error');
 
-    // inputElement.classList.add('error');
+    inputElement.querySelector(".form-control").classList.add('invalid');
     errorElement.innerText = message;
-
 }
 
 function showSuccess(input) {
     let inputElement = input.parentElement;
     let errorElement = inputElement.querySelector('.form-error');
 
-    // inputElement.classList.add('error');
+    inputElement.querySelector(".form-control").classList.remove('invalid');
     errorElement.innerText = '';
-
 }
 
 function isEmptyInput(listInput) {
@@ -30,15 +28,14 @@ function isEmptyInput(listInput) {
             showError(input, `Please fill out your ${input.name}.`);
             isEmptyError = true;
         } else {
-            showSuccess(input)
+            showSuccess(input);
         }
     });
     return isEmptyError;
 }
 
 function checkEmail(input) {
-    const regexEmail =
-        /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     input.value = input.value.trim();
 
     let isEmailError = !regexEmail.test(input.value);
@@ -74,8 +71,8 @@ form.addEventListener('submit', function (e) {
     if (!isEmptyError) {
         var isfullNameLengthError = checkLength(fullname, 5, 100);
         var isemailLengthError = checkLength(email, 5, 100);
-        var issubjectLengthError = checkLength(subject, 50, 250);
-        var ismessageLengthError = checkLength(message, 5, 500);
+        var issubjectLengthError = checkLength(subject, 5, 250);
+        var ismessageLengthError = checkLength(message, 5, 10);
     }
     if (!isEmptyError && !isemailLengthError) {
         var isEmailError = checkEmail(email);
