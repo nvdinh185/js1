@@ -5,18 +5,18 @@ var message = document.querySelector('#message');
 var form = document.forms.form;
 
 function showError(input, message) {
-    let inputElement = input.parentElement;
-    let errorElement = inputElement.querySelector('.form-error');
+    let parentElement = input.parentElement;
+    let errorElement = parentElement.querySelector('.form-error');
 
-    inputElement.querySelector(".form-control").classList.add('invalid');
+    parentElement.querySelector(".form-control").classList.add('invalid');
     errorElement.innerText = message;
 }
 
 function showSuccess(input) {
-    let inputElement = input.parentElement;
-    let errorElement = inputElement.querySelector('.form-error');
+    let parentElement = input.parentElement;
+    let errorElement = parentElement.querySelector('.form-error');
 
-    inputElement.querySelector(".form-control").classList.remove('invalid');
+    parentElement.querySelector(".form-control").classList.remove('invalid');
     errorElement.innerText = '';
 }
 
@@ -54,8 +54,7 @@ function checkLength(input, min, max) {
     if (input.value.length < min) {
         showError(input, `${input.name} should not shorter than ${min} characters`);
         return true;
-    }
-    if (input.value.length > max) {
+    } else if (input.value.length > max) {
         showError(input, `${input.name} should not exceed ${max} characters`);
         return true;
     }
