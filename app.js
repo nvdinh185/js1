@@ -6,7 +6,7 @@ var form = document.forms.form;
 
 function showError(input, message) {
     let parentElement = input.parentElement;
-    let errorElement = parentElement.querySelector('.form-error');
+    let errorElement = parentElement.querySelector('.form-message');
 
     parentElement.querySelector(".form-control").classList.add('invalid');
     errorElement.innerText = message;
@@ -14,7 +14,7 @@ function showError(input, message) {
 
 function showSuccess(input) {
     let parentElement = input.parentElement;
-    let errorElement = parentElement.querySelector('.form-error');
+    let errorElement = parentElement.querySelector('.form-message');
 
     parentElement.querySelector(".form-control").classList.remove('invalid');
     errorElement.innerText = '';
@@ -38,7 +38,7 @@ function checkEmail(input) {
     const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     input.value = input.value.trim();
 
-    let isEmailError = !regexEmail.test(input.value);
+    const isEmailError = !regexEmail.test(input.value);
     if (!isEmailError) {
         showSuccess(input);
     } else {
@@ -78,11 +78,49 @@ form.addEventListener('submit', function (e) {
     }
 
     if (isEmptyError || isEmailError || issubjectLengthError || isfullNameLengthError || isemailLengthError || ismessageLengthError) {
-        //123
-        console.log("nok");
+
+        var students = [
+            {
+                id: 1,
+                name: "Dinh",
+                toan: 5,
+                ly: 6,
+                hoa: 7
+            },
+            {
+                id: 2,
+                name: "Nam",
+                toan: 10,
+                ly: 8,
+                hoa: 5,
+            },
+            {
+                id: 3,
+                name: "Tan",
+                toan: 3,
+                ly: 4,
+                hoa: 5,
+            }
+        ];
+
+        const obj = {
+            id: 1,
+            name: "hello"
+        }
+
+        console.table(obj);
     } else {
-        //123
-        console.log("ok");
+
+        function Person(fullname, email, subject, message) {
+            this.fullname = fullname;
+            this.email = email;
+            this.subject = subject;
+            this.message = message;
+        }
+
+        const person = new Person(fullname.value, email.value, subject.value, message.value);
+
+        console.table(person);
     }
 
 });
