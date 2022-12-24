@@ -108,9 +108,8 @@ form.addEventListener('submit', function (e) {
             name: "hello"
         }
 
-        console.table(obj);
+        console.table(students);
     } else {
-
         function Person(fullname, email, subject, message) {
             this.fullname = fullname;
             this.email = email;
@@ -121,6 +120,8 @@ form.addEventListener('submit', function (e) {
         const person = new Person(fullname.value, email.value, subject.value, message.value);
 
         console.table(person);
+        // reset form
+        form.reset();
     }
 
 });
