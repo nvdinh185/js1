@@ -5,22 +5,24 @@ var message = document.querySelector('#message');
 var form = document.forms.form;
 
 function showError(input, message) {
-    let parentElement = input.parentElement;
-    let errorElement = parentElement.querySelector('.form-message');
+    let errorElement = input.parentElement.querySelector('.form-message');
 
-    parentElement.querySelector(".form-control").classList.add('invalid');
+    input.parentElement.querySelector(".form-control").classList.add('invalid');
     errorElement.innerText = message;
+    Object.assign(errorElement.style, {
+        color: 'red',
+        fontStyle: 'italic'
+    });
 }
 
 function showSuccess(input) {
-    let parentElement = input.parentElement;
-    let errorElement = parentElement.querySelector('.form-message');
+    let errorElement = input.parentElement.querySelector('.form-message');
 
-    parentElement.querySelector(".form-control").classList.remove('invalid');
+    input.parentElement.querySelector(".form-control").classList.remove('invalid');
     errorElement.innerText = '';
 }
 
-function isEmptyInput(listInput) {
+function requireInput(listInput) {
     let isEmptyError = false;
     listInput.forEach(input => {
         input.value = input.value.trim();
@@ -32,6 +34,15 @@ function isEmptyInput(listInput) {
         }
     });
     return isEmptyError;
+}
+
+function checkInput(input) {
+    input.value = input.value.trim();
+    if (input.value === '') {
+        showError(input, `Please fill out your ${input.name}.`);
+    } else {
+        showSuccess(input);
+    }
 }
 
 function checkEmail(input) {
@@ -61,11 +72,17 @@ function checkLength(input, min, max) {
     return false;
 }
 
+function handleBlurInput(input) {
+    input.onblur = function () {
+        checkInput(input);
+    }
+}
+
 form.addEventListener('submit', function (e) {
 
     e.preventDefault();
 
-    let isEmptyError = isEmptyInput([fullname, email, subject, message]);
+    let isEmptyError = requireInput([fullname, email, subject, message]);
 
     if (!isEmptyError) {
         var isfullNameLengthError = checkLength(fullname, 5, 100);
@@ -123,5 +140,12 @@ form.addEventListener('submit', function (e) {
         // reset form
         form.reset();
     }
-
 });
+
+function validationInput(listInput) {
+    listInput.forEach(input => {
+        handleBlurInput(input);
+    });
+}
+
+validationInput([fullname, email, subject, message]);
