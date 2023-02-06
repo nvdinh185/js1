@@ -72,12 +72,6 @@ function checkLength(input, min, max) {
     return false;
 }
 
-function handleBlurInput(input) {
-    input.onblur = function () {
-        checkInput(input);
-    }
-}
-
 form.addEventListener('submit', function (e) {
 
     e.preventDefault();
@@ -144,8 +138,10 @@ form.addEventListener('submit', function (e) {
 
 function validationInput(listInput) {
     listInput.forEach(input => {
-        handleBlurInput(input);
+        input.onblur = function () {
+            checkInput(input);
+        }
     });
 }
 
-validationInput([fullname, email, subject, message]);
+validationInput([fullname, email, subject]);
